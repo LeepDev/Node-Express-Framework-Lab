@@ -1,0 +1,20 @@
+<%- include('../top') -%>
+
+    <h1>Students</h1>
+    <ul>
+      <% students.forEach(function(s) { %>
+        <li>
+          <%= s.name %>
+            - 
+          <%= s.id %>
+            - 
+          <%= s.pass ? 'Pass' : 'Fail' %>
+            -  
+          <a href="/students/<%= s.id %>">
+            Click for Details for Student <%= s.id%>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+
+<%- include('../bottom') -%>

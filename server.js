@@ -4,6 +4,7 @@
 const express = require('express');
 const path = require('path');
 const todoDb = require('./data/todo-db')
+const studentDb = require('./data/student-db')
 
 // Create our express app
 const app = express();
@@ -31,6 +32,16 @@ app.get('/home',function (req, res) {
 app.get('/todos', function(req, res) {
     const todos = todoDb.getAll();
     res.render('todos/index', { todos });
+});
+
+app.get('/students', function (req, res) {
+    const students = studentDb.getAll();
+    res.render('students/index', { students });
+});
+
+app.get('/students/:id', function(req, res) {
+    console.log(`The value for the :id route parameter is: ${req.params.id}`);
+    res.render('students/show', {student: studentDb.getOne(req.params.id)});
 });
 
 // Tell the app to listen on port 3000 
